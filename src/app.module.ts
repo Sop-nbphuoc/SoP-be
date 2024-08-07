@@ -7,19 +7,19 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
     AuthModule,
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: process.env.DB_HOST,
       port: parseInt(<string>process.env.DB_PORT) || 3306,
       username: process.env.DB_USER,
-      password: process.env.DB_PASSWORD,
+      password: process.env.DB_PASS,
       database: process.env.DB_NAME,
       autoLoadEntities: true,
       synchronize: true, // shouldn't be used in production - may lose data
-    }),
-    ConfigModule.forRoot({
-      isGlobal: true,
     }),
     PostModule,
   ],
@@ -30,7 +30,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 export class AppModule {
   static port: number | string;
 
-  constructor(private configService: ConfigService) {
+  constructor(configService: ConfigService) {
     AppModule.port = configService.get<string>('PORT') || 8080;
   }
 

@@ -15,7 +15,7 @@ export interface Comment {
   likes?: LikeEntity[];
 }
 
-@Entity()
+@Entity('comment')
 export class CommentEntity {
   @PrimaryGeneratedColumn()
   id: number;

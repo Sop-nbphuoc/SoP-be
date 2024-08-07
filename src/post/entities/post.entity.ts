@@ -15,7 +15,7 @@ export interface Post {
   likes?: LikeEntity[];
 }
 
-@Entity()
+@Entity('post')
 export class PostEntity {
   @PrimaryGeneratedColumn()
   id: number;

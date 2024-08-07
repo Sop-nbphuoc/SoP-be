@@ -10,7 +10,7 @@ export interface Story {
   userId?: string;
 }
 
-@Entity()
+@Entity('story')
 export class StoryEntity {
   @PrimaryGeneratedColumn()
   id: number;

@@ -13,6 +13,7 @@ export class User {
   username?: string;
   email?: string;
   password?: string;
+  role?: Role;
   avatar?: string;
   cover?: string; 
   name?: string;
@@ -35,6 +36,10 @@ export class User {
   stories?: StoryEntity[];
 }
 
+export enum Role {
+  USER = 'user',
+  ADMIN = 'admin',
+}
 @Entity('user')  
 export class UserEntity implements User {
   @PrimaryGeneratedColumn('uuid')
@@ -48,6 +53,9 @@ export class UserEntity implements User {
 
   @Column()
   password: string;
+
+  @Column({ default: Role.USER, type: 'enum', enum: Role })
+  role: Role;
 
   @Column({ nullable: true })
   avatar: string;

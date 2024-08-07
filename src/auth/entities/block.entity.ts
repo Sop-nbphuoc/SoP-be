@@ -11,7 +11,7 @@ export interface Block {
 }
 
 
-@Entity()
+@Entity('block')
 @Unique(['blockerId', 'blockedId'])
 export class BlockEntity implements Block {
   @PrimaryGeneratedColumn()

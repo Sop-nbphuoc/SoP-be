@@ -14,7 +14,7 @@ export interface Like {
   commentId?: number;
 }
 
-@Entity()
+@Entity('like')
 export class LikeEntity {
   @PrimaryGeneratedColumn()
   id: number;
