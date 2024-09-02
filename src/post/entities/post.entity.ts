@@ -1,4 +1,4 @@
-import { UserEntity } from 'src/auth/entities/user.entity';
+import { UserEntity } from 'src/user/entities/user.entity';
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, ManyToOne, OneToMany } from 'typeorm';
 import { LikeEntity } from './like.entity';
 import { CommentEntity } from './comment.entity';

@@ -1,4 +1,4 @@
-import {  UserEntity } from 'src/auth/entities/user.entity';
+import {  UserEntity } from 'src/user/entities/user.entity';
 import { Entity, PrimaryGeneratedColumn, CreateDateColumn, ManyToOne, Column, Unique } from 'typeorm';
 
 export interface Story {

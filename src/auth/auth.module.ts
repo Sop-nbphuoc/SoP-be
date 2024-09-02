@@ -1,27 +1,22 @@
 import { Module } from '@nestjs/common';
-import { AuthService } from './service/auth.service';
-import { AuthController } from './controllers/auth.controller';
+import { AuthService } from './auth.service';
+import { AuthController } from './auth.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { UserEntity } from './entities/user.entity';
-import { FollowerEnitity } from './entities/follower.entity';
-import { FollowRequestEntity } from './entities/follower_r.entity';
-import { BlockEntity } from './entities/block.entity';
+import { UserEntity } from '../user/entities/user.entity';
+import { FollowerEnitity } from '../user/entities/follower.entity';
+import { FollowRequestEntity } from '../user/entities/follower_r.entity';
+import { BlockEntity } from '../user/entities/block.entity';
 import { JwtModule } from '@nestjs/jwt';
-import { UserService } from './service/user.service';
 import { AccessTokenStrategy } from './guards/access.strategy';
 import { RefreshTokenStrategy } from './guards/refresh.strategy';
+import { UserModule } from 'src/user/user.module';
 
 @Module({
   imports: [
     JwtModule.register({}),
-    TypeOrmModule.forFeature([
-      UserEntity,
-      FollowerEnitity,
-      FollowRequestEntity,
-      BlockEntity,
-    ]),
+    UserModule,
   ],
   controllers: [AuthController],
-  providers: [AuthService,UserService,AccessTokenStrategy,RefreshTokenStrategy],
+  providers: [AuthService,AccessTokenStrategy,RefreshTokenStrategy],
 })
 export class AuthModule {}
